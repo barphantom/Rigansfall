@@ -12,4 +12,6 @@ namespace Rigansfall.Server
 
         public string? Location { get; set; }
     }
+
+
 }
