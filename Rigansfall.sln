@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rigansfall.Server", "Rigansfall.Server\Rigansfall.Server.csproj", "{8521815A-129C-42AC-8E11-EB5BEE1E7A32}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "rigansfall.client", "rigansfall.client\rigansfall.client.esproj", "{5EC0318D-766D-4405-94F8-75A313C536F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8521815A-129C-42AC-8E11-EB5BEE1E7A32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8521815A-129C-42AC-8E11-EB5BEE1E7A32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8521815A-129C-42AC-8E11-EB5BEE1E7A32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8521815A-129C-42AC-8E11-EB5BEE1E7A32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC0318D-766D-4405-94F8-75A313C536F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC0318D-766D-4405-94F8-75A313C536F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC0318D-766D-4405-94F8-75A313C536F1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5EC0318D-766D-4405-94F8-75A313C536F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC0318D-766D-4405-94F8-75A313C536F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC0318D-766D-4405-94F8-75A313C536F1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

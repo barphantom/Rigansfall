@@ -1,0 +1,19 @@
+﻿#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+th, td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#welcome {
+    font-weight: 700;
+    color: antiquewhite;
+    background: linear-gradient(90deg, rgba(231,48,97,0.9220281862745098) 0%, rgba(9,9,121,1) 40%, rgba(0,22,255,1) 100%);
+    border-radius: 20px;
+    padding: 40px 80px;
+}
