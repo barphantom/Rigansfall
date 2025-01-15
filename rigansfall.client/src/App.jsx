@@ -37,6 +37,7 @@ function App() {
                 <h1>Witaj w Rigansfall</h1>
                 <h2>Miejscu dla najodwazniejszych bohaterow!</h2>
                 <p>To jest test dla dzia³ania na ga³êziach githuba</p>
+                <p>Bemowo</p>
             </div>
 
             <h2 id="tableLabel">Weather forecast</h2>
