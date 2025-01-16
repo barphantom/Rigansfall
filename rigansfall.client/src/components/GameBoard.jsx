@@ -17,34 +17,6 @@ export default function GameBoard({ mapData }) {
         }
     };
 
-    //GameBoard.propTypes = {
-
-    //}
-
-    //return (
-    //    <div className="game-board">
-    //        {[...Array(rows)].map((_, rowIndex) => (
-    //            <div key={rowIndex} className="row">
-    //                {[...Array(cols)].map((_, colIndex) => {
-    //                    // Przyk³adowe logika dla "przechodnoœci" kafelka
-    //                    const isWalkable = (rowIndex + colIndex) % 2 === 0; // Przyk³ad losowej logiki
-    //                    const isPlayer = playerPosition.x === colIndex && playerPosition.y === rowIndex;
-
-    //                    return (
-    //                        <div
-    //                            key={`${rowIndex}-${colIndex}`}
-    //                            className={`tile ${isWalkable ? 'walkable' : 'blocked'} ${isPlayer ? 'player' : ''}`}
-    //                            onClick={() => handleTileClick(colIndex, rowIndex, isWalkable)}
-    //                        >
-    //                            {isPlayer ? 'P' : `${colIndex},${rowIndex}`}
-    //                        </div>
-    //                    );
-    //                })}
-    //            </div>
-    //        ))}
-    //    </div>
-    //);
-
     function isPlayer(row, column) {
         if (row === playerPosition.x && column === playerPosition.y) {
             return true;
@@ -71,10 +43,4 @@ export default function GameBoard({ mapData }) {
         </ol>
     )
 
-    //return (
-    //    <div className="game-board">
-    //        <h3>{mapData.mapName}</h3>
-    //        {renderTiles()}
-    //    </div>
-    //);
 };
