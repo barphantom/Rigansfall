@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-//import GameBoard from "./components/GameBoard.jsx";
+import GameBoard from "./components/GameBoard.jsx";
 
 function App() {
     const [forecasts, setForecasts] = useState();
@@ -80,17 +80,12 @@ function App() {
                 <h1>Witaj w Rigansfall</h1>
                 <h2>Miejscu dla najodwazniejszych bohaterow!</h2>
                 <p>To jest test dla dzia³ania na ga³êziach githuba</p>
-                {/*<p>Bemowo {mapData[0].mapName}</p>*/}
-                {/*<p>{ mapData[0].Name }</p>*/}
             </div>
 
-            {mapContenst }
+            {/*{mapContenst }*/}
 
-            {/*<GameBoard />*/}
+            <GameBoard mapData={mapData} />
 
-            <h2 id="tableLabel">Weather forecast</h2>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
         </div>
     );
     

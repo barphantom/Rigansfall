@@ -33,7 +33,6 @@ namespace Rigansfall.Server.Controllers
             return Ok(map);
 
         }
-
         //public ActionResult<Maps> GetMaps()
         //{
         //    var newMap = new Maps

@@ -17,3 +17,43 @@ th, td {
     border-radius: 20px;
     padding: 40px 80px;
 }
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* 10 kolumn */
+    grid-auto-flow: row; /* Wymuszamy układanie wierszami */
+    gap: 2px; /* Odstęp między kafelkami */
+    list-style: none; /* Usunięcie numerów */
+    padding: 0;
+    margin: 0;
+}
+
+
+.game-board li {
+    display: flex;
+    justify-content: center; /* Wyśrodkowanie przycisku w kafelku */
+    align-items: center;
+}
+
+.game-board button {
+    width: 40px; /* Szerokość kafelka */
+    height: 40px; /* Wysokość kafelka */
+    background-color: lightgray; /* Kolor tła kafelka */
+    border: 1px solid black; /* Obramowanie kafelka */
+    cursor: pointer; /* Zmiana kursora na wskaźnik */
+}
+
+.game-board button:hover {
+    background-color: lightblue; /* Podświetlenie kafelka po najechaniu */
+}
+
+.game-board button:disabled {
+    background-color: darkgray; /* Wygląd dla kafelków niedostępnych */
+    cursor: not-allowed; /* Zmiana kursora dla niedostępnych */
+    }
+
+.game-board .player {
+    background-color: green; /* Kolor kafelka gracza */
+    color: white; /* Kolor tekstu gracza */
+    font-weight: bold; /* Pogrubienie tekstu gracza */
+}
