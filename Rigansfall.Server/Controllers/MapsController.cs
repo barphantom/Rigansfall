@@ -7,28 +7,12 @@ namespace Rigansfall.Server.Controllers
     [Route("api/[controller]")]
     public class MapsController : ControllerBase
     {
-        [HttpGet("new-map")]
+        [HttpGet("scenariusz{id:int}")]
         public ActionResult<Map> GetMap()
         {
             int mapID = getMapId();
-            // Przykładowa mapa 10x10
-            var map = new Map
-            {
-                mapId = mapID,
-                mapName = "Gumisiowy las",
-                Width = 50,
-                Height = 50,
-                Tiles = Enumerable.Range(0, 10)
-                    .SelectMany(x => Enumerable.Range(0, 10)
-                    .Select(y => new Tile
-                    {
-                        MapId = mapID,
-                        X = x,
-                        Y = y,
-                        isWalkable = true // Wszystkie kafelki na początku są "przechodnie"
-                    }))
-                    .ToList()
-            };
+
+            var map = GenerateMap(mapID);
 
             return Ok(map);
 
@@ -44,6 +28,26 @@ namespace Rigansfall.Server.Controllers
         //    return Ok(newMap);
         //}
 
+        private Map GenerateMap(int id, string name, int width, int height)
+        {
+            var tiles = Enumerable.Range(0, width)
+                .SelectMany(x => Enumerable.Range(0, height)
+                .Select(y => new Tile
+                {
+                    MapId = id,
+                    X = x,
+                    Y = y,
+                    isWalkable = DetermineWalkability(x, y) // Wywołanie logiki do określenia przechodniości
+                }))
+                .ToList();
+
+            return new Map
+            {
+                mapId = id,
+                mapName = name,
+                Tiles = tiles
+            };
+        }
         private int getMapId()
         {
             return 1; // Na razie zawsze zwraca 1
