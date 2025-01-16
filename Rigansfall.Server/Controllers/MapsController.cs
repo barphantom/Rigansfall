@@ -14,8 +14,10 @@ namespace Rigansfall.Server.Controllers
             // Przykładowa mapa 10x10
             var map = new Map
             {
-                Id = mapID,
-                Name = "Test Map",
+                mapId = mapID,
+                mapName = "Gumisiowy las",
+                Width = 50,
+                Height = 50,
                 Tiles = Enumerable.Range(0, 10)
                     .SelectMany(x => Enumerable.Range(0, 10)
                     .Select(y => new Tile
@@ -29,8 +31,18 @@ namespace Rigansfall.Server.Controllers
             };
 
             return Ok(map);
-            
+
         }
+
+        //public ActionResult<Maps> GetMaps()
+        //{
+        //    var newMap = new Maps
+        //    {
+        //        mapId = 5,
+        //        mapName = "Mistyczny las"
+        //    };
+        //    return Ok(newMap);
+        //}
 
         private int getMapId()
         {

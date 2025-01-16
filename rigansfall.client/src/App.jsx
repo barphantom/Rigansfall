@@ -1,11 +1,18 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+//import GameBoard from "./components/GameBoard.jsx";
 
 function App() {
     const [forecasts, setForecasts] = useState();
+    const [mapData, setMapData] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         populateWeatherData();
+    }, []);
+
+    useEffect(() => {
+        getMapInfo();
     }, []);
 
     const contents = forecasts === undefined
@@ -31,14 +38,55 @@ function App() {
             </tbody>
         </table>;
 
+    //const mapContent = mapData === undefined
+    //    ? <p><em>Loading... React app </em></p>
+    //    : <table className="table table-striped" aria-labelledby="tableLabel">
+    //        <thead>
+    //            <tr>
+    //                <th>Map id</th>
+    //                <th>Map name</th>
+    //            </tr>
+    //        </thead>
+    //        <tbody>
+    //            {mapData.map(map =>
+    //                <tr key={map.mapId}>
+    //                    <td>{map.mapId}</td>
+    //                    <td>{map.mapName}</td>
+    //                </tr>
+    //            )}
+    //        </tbody>
+    //    </table>;
+
+    const mapContenst = loading ?
+        <p>Loading...</p> : (
+            <div>
+                <p>Map Name: {mapData.mapName}</p>  {/* Wyúwietlanie mapName */}
+                <p>Map ID: {mapData.mapId}</p>  {/* Wyúwietlanie mapId */}
+                <p>Map width: {mapData.Width}</p>
+                <p>Map height: {mapData.Height}</p>
+                {/*<p>Map tiles: {mapData.Tiles.length}</p>*/}
+                <p>Map tile 0: {typeof (mapData.Tiles)}</p>
+                <ul>
+                    {mapData.Tiles.map((tile, index) => (
+                        <li key={index}>This is tile x: {tile.X}, y: {tile.Y}. Index: {index}</li>
+                    ))}
+                </ul>
+            </div>
+        );
+
     return (
         <div>
             <div id="welcome">
                 <h1>Witaj w Rigansfall</h1>
                 <h2>Miejscu dla najodwazniejszych bohaterow!</h2>
                 <p>To jest test dla dzia≥ania na ga≥Íziach githuba</p>
-                <p>Bemowo</p>
+                {/*<p>Bemowo {mapData[0].mapName}</p>*/}
+                {/*<p>{ mapData[0].Name }</p>*/}
             </div>
+
+            {mapContenst }
+
+            {/*<GameBoard />*/}
 
             <h2 id="tableLabel">Weather forecast</h2>
             <p>This component demonstrates fetching data from the server.</p>
@@ -48,10 +96,29 @@ function App() {
     
     async function populateWeatherData() {
         const response = await fetch('weatherforecast');
+        console.log(response);
         if (response.ok) {
             const data = await response.json();
             setForecasts(data);
         }
+    }
+
+    async function getMapInfo() {
+        try {
+            const response = await fetch('https://localhost:7071/api/Maps/new-map');  // Adres API
+            if (response.ok) {  // Sprawdzamy, czy odpowiedü jest poprawna
+                const data = await response.json();  // Odczytujemy odpowiedü jako JSON
+                setMapData(data);  // Ustawiamy dane w stanie mapData
+                setLoading(false);  // Ustawiamy stan ≥adowania na false, po zakoÒczeniu pobierania
+            } else {
+                console.error('B≥πd odpowiedzi serwera:', response.statusText);
+                setLoading(false);  // W przypadku b≥Ídu ustawiamy ≥adowanie na false
+            }
+        } catch (error) {
+            console.error('B≥πd podczas pobierania danych:', error);
+            setLoading(false);  // Ustawiamy stan ≥adowania na false w przypadku b≥Ídu
+        }
+
     }
 }
 

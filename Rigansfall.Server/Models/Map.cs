@@ -2,9 +2,9 @@
 {
     public class Map
     {
-        public int Id { get; set; }
-        public string? Name { get; set; }
-        public string? Description { get; set; }
+        public int mapId { get; set; }
+        public string? mapName { get; set; }
+        public string? mapDescription { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public List<Tile> Tiles { get; set; }

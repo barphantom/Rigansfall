@@ -7,6 +7,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null; // Wy³¹czenie konwersji do camelCase
+    });
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin() // Pozwala na ¿¹dania z dowolnego Ÿród³a
+              .AllowAnyMethod() // Pozwala na dowolne metody HTTP (GET, POST, itd.)
+              .AllowAnyHeader(); // Pozwala na dowolne nag³ówki
+    });
+});
+
 var app = builder.Build();
 
 app.UseDefaultFiles();
@@ -18,6 +34,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(); // dodajemy CORS
 
 app.UseHttpsRedirection();
 
