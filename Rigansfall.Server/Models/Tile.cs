@@ -7,6 +7,7 @@
         public int X { get; set; }
         public int Y { get; set; }
         public string? Type { get; set; }
+        public bool isWalkable { get; set; }
     }
 
 }
