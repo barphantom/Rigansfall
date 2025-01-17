@@ -18,29 +18,50 @@ th, td {
     padding: 40px 80px;
 }
 
-.game-board {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr); /* 10 kolumn */
-    grid-auto-flow: row; /* Wymuszamy układanie wierszami */
-    gap: 2px; /* Odstęp między kafelkami */
-    list-style: none; /* Usunięcie numerów */
-    padding: 0;
+ol {
+    list-style: none;
     margin: 0;
+    padding: 0;
 }
 
+.game-board {
+    /*display: grid;
+    grid-template-columns: repeat(10, 1fr);*/ /* 10 kolumn */
+    /*grid-auto-flow: row;*/ /* Wymuszamy układanie wierszami */
+    /*gap: 20px;*/ /* Odstęp między kafelkami */
+    /*list-style: none;*/ /* Usunięcie numerów */
+    /*padding: 0;
+    margin: 0;*/
 
-.game-board li {
     display: flex;
-    justify-content: center; /* Wyśrodkowanie przycisku w kafelku */
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 3rem 0;
+    padding: 0;
+    flex-direction: row;
+}
+
+.game-board ol{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
 }
 
 .game-board button {
-    width: 40px; /* Szerokość kafelka */
-    height: 40px; /* Wysokość kafelka */
-    background-color: lightgray; /* Kolor tła kafelka */
-    border: 1px solid black; /* Obramowanie kafelka */
-    cursor: pointer; /* Zmiana kursora na wskaźnik */
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    background: #aca788;
+    color: indianred;
+    cursor: pointer;
+    font-size: 3rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    line-height: 0;
 }
 
 .game-board button:hover {
