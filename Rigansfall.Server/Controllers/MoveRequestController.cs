@@ -1,15 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Rigansfall.Server.Models;
 
 namespace Rigansfall.Server.Controllers
 {
     [ApiController]
-    [Route("api/MovePlayer")]
+    [Route("api/[controller]")]
     public class MoveRequestController : Controller
     {
         [HttpPost]
-        public IActionResult MovePlayer([FromBody] MoveRequestController moveRequest)
+        public IActionResult MovePlayer([FromBody] MoveRequest moveRequest)
         {
-            return View();
+            if (moveRequest.newX < 0 || moveRequest.newY < 0 ||
+                moveRequest.newX > 5 || moveRequest.newY > 5)
+            {
+                return Ok(new {canMove = false, reason = "Out of bounds" });
+            }
+
+            return Ok(new {canMove = true });
         }
     }
 }

@@ -5,7 +5,7 @@ export default function GameBoard({ mapData }) {
 
     const rows = 10; // Liczba rzêdów
     const cols = 10; // Liczba kolumn
-    const [playerPosition, setPlayerPosition] = useState({ x: 3, y: 0 }); // Pozycja gracza
+    const [playerPosition, setPlayerPosition] = useState({ x: 0, y: 3 }); // Pozycja gracza
 
     // Obs³uga klikniêcia na kafelek
     //const handleTileClick = (x, y, isWalkable) => {
@@ -18,7 +18,7 @@ export default function GameBoard({ mapData }) {
     //};
 
     const handleTileClick = async (x, y, isWalkable) => {
-        const url = "https://localhost:7071/api/MovePlayer"
+        const url = "https://localhost:7071/api/MoveRequest"
         try {
             const respone = await fetch(url, {
                 method: "POST",
