@@ -1,0 +1,447 @@
+{
+    "mapId": 2,
+    "name": "Paj\u0119cza Puszcza",
+    "tiles": [
+        {
+            "mapId": 2,
+            "x": 0,
+            "y": 0,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 1,
+            "y": 0,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 2,
+            "y": 0,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 3,
+            "y": 0,
+            "isWalkable": true,
+            "type": 4
+        },
+        {
+            "mapId": 2,
+            "x": 4,
+            "y": 0,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 5,
+            "y": 0,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 6,
+            "y": 0,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 0,
+            "y": 1,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 1,
+            "y": 1,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 2,
+            "y": 1,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 3,
+            "y": 1,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 4,
+            "y": 1,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 5,
+            "y": 1,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 6,
+            "y": 1,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 0,
+            "y": 2,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 1,
+            "y": 2,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 2,
+            "y": 2,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 3,
+            "y": 2,
+            "isWalkable": true,
+            "type": 3
+        },
+        {
+            "mapId": 2,
+            "x": 4,
+            "y": 2,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 5,
+            "y": 2,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 6,
+            "y": 2,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 0,
+            "y": 3,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 1,
+            "y": 3,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 2,
+            "y": 3,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 3,
+            "y": 3,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 4,
+            "y": 3,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 5,
+            "y": 3,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 6,
+            "y": 3,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 0,
+            "y": 4,
+            "isWalkable": true,
+            "type": 1
+        },
+        {
+            "mapId": 2,
+            "x": 1,
+            "y": 4,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 2,
+            "y": 4,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 3,
+            "y": 4,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 4,
+            "y": 4,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 5,
+            "y": 4,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 6,
+            "y": 4,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 0,
+            "y": 5,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 1,
+            "y": 5,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 2,
+            "y": 5,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 3,
+            "y": 5,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 4,
+            "y": 5,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 5,
+            "y": 5,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 6,
+            "y": 5,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 0,
+            "y": 6,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 1,
+            "y": 6,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 2,
+            "y": 6,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 3,
+            "y": 6,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 4,
+            "y": 6,
+            "isWalkable": false,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 5,
+            "y": 6,
+            "isWalkable": true,
+            "type": 2
+        },
+        {
+            "mapId": 2,
+            "x": 6,
+            "y": 6,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 0,
+            "y": 7,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 1,
+            "y": 7,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 2,
+            "y": 7,
+            "isWalkable": true,
+            "type": 2
+        },
+        {
+            "mapId": 2,
+            "x": 3,
+            "y": 7,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 4,
+            "y": 7,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 5,
+            "y": 7,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 6,
+            "y": 7,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 0,
+            "y": 8,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 1,
+            "y": 8,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 2,
+            "y": 8,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 3,
+            "y": 8,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 4,
+            "y": 8,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 5,
+            "y": 8,
+            "isWalkable": true,
+            "type": 0
+        },
+        {
+            "mapId": 2,
+            "x": 6,
+            "y": 8,
+            "isWalkable": true,
+            "type": 0
+        }
+    ]
+}
