@@ -1,4 +1,4 @@
-﻿namespace Rigansfall.Server.Models
+﻿namespace Rigansfall.Server.Models.DTOs
 {
     public class MoveRequest
     {
