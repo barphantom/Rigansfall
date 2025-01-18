@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Rigansfall.Server.Models;
+using Rigansfall.Server.Models.Entities;
 
 namespace Rigansfall.Server.Controllers
 {
