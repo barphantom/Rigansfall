@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Rigansfall.Server.Models.Entities;
+using Rigansfall.Server.Models.DTOs;
 
 namespace Rigansfall.Server.Controllers
 {
@@ -8,11 +9,11 @@ namespace Rigansfall.Server.Controllers
     public class MapsController : ControllerBase
     {
         [HttpGet("new-map")]
-        public ActionResult<Map> GetMap()
+        public ActionResult<MapManager> GetMap()
         {
             int mapID = getMapId();
             // Przykładowa mapa 10x10
-            var map = new Map
+            var map = new MapManager
             {
                 mapId = mapID,
                 mapName = "Gumisiowy las",
@@ -27,7 +28,16 @@ namespace Rigansfall.Server.Controllers
                         Y = y,
                         isWalkable = true // Wszystkie kafelki na początku są "przechodnie"
                     }))
-                    .ToList()
+                    .ToList(),
+
+                //poczatkowy stan gracza
+                graczX = 2,
+                graczY = 5,
+                graczMaxHP = 100,
+                graczAtak = 10,
+                graczObrona = 5,
+                graczMaxStamina = 10
+
             };
 
             return Ok(map);
