@@ -10,13 +10,15 @@ namespace Rigansfall.Server.Controllers
         [HttpPost]
         public IActionResult MovePlayer([FromBody] MoveRequest moveRequest)
         {
-            if (moveRequest.newX < 0 || moveRequest.newY < 0 ||
-                moveRequest.newX > 5 || moveRequest.newY > 5)
+            if (Math.Abs(moveRequest.currentX - moveRequest.newX) <= 1 && Math.Abs(moveRequest.currentY - moveRequest.newY) <= 1)
             {
-                return Ok(new {canMove = false, reason = "Out of bounds" });
+                return Ok(new {canMove = true, reason = "moved one tile" });
             }
-
-            return Ok(new {canMove = true });
+            else
+            {
+                return Ok(new { canMove = false, reason = "too far" });
+            }
+            }
         }
     }
 }
