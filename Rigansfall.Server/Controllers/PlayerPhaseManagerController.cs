@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Rigansfall.Server.Models;
-//using Rigansfall.Server.DTOs;
 using Rigansfall.Server.Models.DTOs;
 using Rigansfall.Server.Models.Entities;
 
@@ -10,89 +8,94 @@ namespace Rigansfall.Server.Controllers
     [Route("api/[controller]")]
     public class PlayerPhaseManagerController : ControllerBase
     {
-        private static int maxStamina = 10; // Maksymalna stamina (można rozszerzyć, aby była odczytywana z bazy danych)
-        private static int currentStamina = maxStamina; // Obecna stamina
-        private static (int X, int Y) playerPosition = (0, 0); // Pozycja startowa gracza na mapie
-        private readonly Map currentMap; // Zakładamy, że masz klasę Map
+        private static MapManager CurrentMap; // Tymczasowe przechowywanie stanu mapy na serwerze
 
+        // Inicjalizacja mapy (zależne od wcześniejszego MapsController)
         public PlayerPhaseManagerController()
         {
-            // Inicjalizacja mapy, tutaj zakładamy statyczną mapę, ale docelowo powinna być dynamiczna
-            currentMap = new Map
+            if (CurrentMap == null)
             {
-                Id = 1,
-                Name = "Test Map",
-                Tiles = Enumerable.Range(0, 10)
-                    .SelectMany(x => Enumerable.Range(0, 10)
-                    .Select(y => new Tile
-                    {
-                        MapId = 1,
-                        X = x,
-                        Y = y,
-                        isWalkable = true // Wszystkie kafelki na początku są przechodnie
-                    }))
-                    .ToList()
-            };
+                CurrentMap = new MapManager
+                {
+                    mapId = 1,
+                    mapName = "Gumisiowy Las",
+                    Width = 10,
+                    Height = 10,
+                    Tiles = GenerateInitialTiles(10, 10),
+                    graczX = 2,
+                    graczY = 5,
+                    graczMaxHP = 100,
+                    graczCurrentHP = 100,
+                    graczAtak = 10,
+                    graczObrona = 5,
+                    graczMaxStamina = 10,
+                    graczCurrentStamina = 10
+                };
+            }
         }
 
-        /// <summary>
-        /// Rozpoczyna nową turę gracza, resetując jego staminę do maksymalnej.
-        /// </summary>
-        [HttpPost("start-turn")]
-        public IActionResult StartTurn()
-        {
-            currentStamina = maxStamina;
-            return Ok(new { Message = "Gracz rozpoczął nową turę.", Stamina = currentStamina });
-        }
-
-        /// <summary>
-        /// Obsługuje ruch gracza na wybrane pole, jeśli ma wystarczającą ilość staminy.
-        /// </summary>
+        // Ruch gracza
         [HttpPost("move")]
         public IActionResult MovePlayer([FromBody] MoveRequest moveRequest)
         {
-            // Sprawdzanie staminy
-            if (currentStamina <= 0)
+            // Sprawdź, czy gracz ma wystarczająco staminy
+            if (CurrentMap.graczCurrentStamina <= 0)
             {
-                return BadRequest(new { Message = "Nie masz wystarczającej ilości staminy, aby się poruszyć. Rozpocznij nową turę." });
+                return BadRequest(new { success = false, message = "Brak staminy. Tura zakończona." });
             }
 
-            // Sprawdzanie poprawności współrzędnych
+            // Sprawdź, czy ruch jest dozwolony
             if (Math.Abs(moveRequest.currentX - moveRequest.newX) > 1 || Math.Abs(moveRequest.currentY - moveRequest.newY) > 1)
             {
-                return BadRequest(new { Message = "Możesz poruszać się tylko na sąsiednie pola." });
+                return BadRequest(new { success = false, message = "Nie można się przemieścić o więcej niż jedno pole." });
             }
 
-            // Sprawdzanie, czy docelowe pole jest przechodnie
-            var targetTile = currentMap.Tiles.FirstOrDefault(t => t.X == moveRequest.newX && t.Y == moveRequest.newY);
+            // Sprawdź, czy kafelek jest przechodni
+            var targetTile = CurrentMap.Tiles.FirstOrDefault(t => t.X == moveRequest.newX && t.Y == moveRequest.newY);
             if (targetTile == null || !targetTile.isWalkable)
             {
-                return BadRequest(new { Message = "Docelowe pole nie jest przechodnie." });
+                return BadRequest(new { success = false, message = "Wybrane pole jest nieprzechodnie." });
             }
 
-            // Aktualizacja pozycji i staminy
-            playerPosition = (moveRequest.newX, moveRequest.newY);
-            currentStamina--;
+            // Aktualizuj pozycję gracza
+            CurrentMap.graczX = moveRequest.newX;
+            CurrentMap.graczY = moveRequest.newY;
 
-            return Ok(new
+            // Zmniejsz staminę
+            CurrentMap.graczCurrentStamina--;
+
+            // Sprawdź, czy stamina się skończyła
+            if (CurrentMap.graczCurrentStamina <= 0)
             {
-                Message = "Gracz przesunął się na nowe pole.",
-                Position = playerPosition,
-                Stamina = currentStamina
-            });
+                EndTurn();
+                return Ok(new { success = true, message = "Tura zakończona. Stamina się skończyła.", newPosition = new { x = moveRequest.newX, y = moveRequest.newY } });
+            }
+
+            return Ok(new { success = true, message = "Ruch wykonany.", newPosition = new { x = moveRequest.newX, y = moveRequest.newY }, remainingStamina = CurrentMap.graczCurrentStamina });
         }
 
-        /// <summary>
-        /// Sprawdza aktualny stan gracza, w tym pozycję i staminę.
-        /// </summary>
-        [HttpGet("status")]
-        public IActionResult GetPlayerStatus()
+        // Zakończenie tury gracza
+        private void EndTurn()
         {
-            return Ok(new
-            {
-                Position = playerPosition,
-                Stamina = currentStamina
-            });
+            // Odśwież staminę gracza
+            CurrentMap.graczCurrentStamina = CurrentMap.graczMaxStamina;
+
+            // Tu można dodać logikę dla tury przeciwników
+        }
+
+        // Pomocnicza metoda do generowania kafelków mapy
+        private static List<Tile> GenerateInitialTiles(int width, int height)
+        {
+            return Enumerable.Range(0, width)
+                .SelectMany(x => Enumerable.Range(0, height)
+                .Select(y => new Tile
+                {
+                    X = x,
+                    Y = y,
+                    isWalkable = true,
+                    Type = 0 // Domyślny typ kafelka
+                }))
+                .ToList();
         }
     }
 }

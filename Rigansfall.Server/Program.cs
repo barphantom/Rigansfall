@@ -7,6 +7,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<MapStateService>(); // Dodajemy serwis do DI
+
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

@@ -8,11 +8,17 @@ namespace Rigansfall.Server.Controllers
     [Route("api/[controller]")]
     public class MapsController : ControllerBase
     {
+        private readonly MapStateService _mapStateService;
+
+        public MapsController(MapStateService mapStateService)
+        {
+            _mapStateService = mapStateService;
+        }
+
         [HttpGet("new-map")]
         public ActionResult<MapManager> GetMap()
         {
             int mapID = getMapId();
-            // Przykładowa mapa 10x10
             var map = new MapManager
             {
                 mapId = mapID,
@@ -26,44 +32,25 @@ namespace Rigansfall.Server.Controllers
                         MapId = mapID,
                         X = x,
                         Y = y,
-                        isWalkable = true // Wszystkie kafelki na początku są "przechodnie"
+                        isWalkable = true
                     }))
                     .ToList(),
-
-                //poczatkowy stan gracza
                 graczX = 2,
                 graczY = 5,
                 graczMaxHP = 100,
                 graczAtak = 10,
                 graczObrona = 5,
                 graczMaxStamina = 10
-
             };
 
-            return Ok(map);
+            _mapStateService.SetMap(map);
 
+            return Ok(map);
         }
 
         private int getMapId()
         {
             return 1;
         }
-
-
-        //[HttpGet("scenariusz{id:int}")]
-        //public ActionResult<Map> GetMap()
-        //{
-
-
     }
-
-    //public ActionResult<Maps> GetMaps()
-    //{
-    //    var newMap = new Maps
-    //    {
-    //        mapId = 5,
-    //        mapName = "Mistyczny las"
-    //    };
-    //    return Ok(newMap);
-    //}
 }
