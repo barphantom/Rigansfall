@@ -18,7 +18,6 @@ namespace Rigansfall.Server.Controllers
             {
                 return Ok(new { canMove = false, reason = "too far" });
             }
-            }
         }
     }
 }
