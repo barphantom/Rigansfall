@@ -34,7 +34,7 @@ export default function GameBoard() {
     }, []);
 
 
-    const handleTileClick = async (x, y, isWalkable) => {
+    const handleTileClick = async (x, y) => {
         const url = "https://localhost:7071/api/MoveRequest"
         try {
             const respone = await fetch(url, {
@@ -84,12 +84,6 @@ export default function GameBoard() {
         if (type === 4) return treasure;
     }
 
-    function updateFirstPlayerPosition(x, y, type) {
-        if (type === 1) {
-            setPlayerPosition({ x, y });
-        }
-    }
-
     async function getMapInfo() {
         try {
             const response = await fetch('https://localhost:7071/api/Maps/load-map');  // Adres API
@@ -118,12 +112,10 @@ export default function GameBoard() {
                                 {[...Array(cols)].map((col, colIndex) => (
                                     <li key={`${rowIndex}-${colIndex}`}>
                                         <button
-                                            onClick={() => handleTileClick(rowIndex, colIndex, mapData.tiles[rowIndex * 10 + colIndex].isWalkable)}
+                                            onClick={() => handleTileClick(rowIndex, colIndex)}
                                             disabled={ mapData.tiles[rowIndex * 10 + colIndex].isWalkable === false}
                                         >
-                                            {/*{isPlayer(rowIndex, colIndex) ? 'X' : 'O'}*/}
-                                            {/*{if () }*/}
-                                            {/*{mapData.tiles && updateFirstPlayerPosition(rowIndex, colIndex, mapData.tiles[rowIndex * 10 + colIndex].type)}*/}
+
                                             <img src={mapData && ((isPlayer(rowIndex, colIndex)) ? hero : getPictureName(mapData.tiles[rowIndex * 10 + colIndex].type, mapData.tiles[rowIndex * 10 + colIndex].isWalkable))}
                                                 alt="blad" />
 
