@@ -80,7 +80,7 @@ ol {
 
 .game-board button:disabled {
     background-color: darkgray; /* Wygląd dla kafelków niedostępnych */
-    cursor: not-allowed; /* Zmiana kursora dla niedostępnych */
+    cursor: pointer; /* Zmiana kursora dla niedostępnych */
     }
 
 .game-board .player {

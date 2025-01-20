@@ -117,7 +117,10 @@ export default function GameBoard() {
                             <ol>
                                 {[...Array(cols)].map((col, colIndex) => (
                                     <li key={`${rowIndex}-${colIndex}`}>
-                                        <button onClick={() => handleTileClick(rowIndex, colIndex, mapData.tiles[rowIndex * 10 + colIndex].isWalkable)}>
+                                        <button
+                                            onClick={() => handleTileClick(rowIndex, colIndex, mapData.tiles[rowIndex * 10 + colIndex].isWalkable)}
+                                            disabled={ mapData.tiles[rowIndex * 10 + colIndex].isWalkable === false}
+                                        >
                                             {/*{isPlayer(rowIndex, colIndex) ? 'X' : 'O'}*/}
                                             {/*{if () }*/}
                                             {/*{mapData.tiles && updateFirstPlayerPosition(rowIndex, colIndex, mapData.tiles[rowIndex * 10 + colIndex].type)}*/}
