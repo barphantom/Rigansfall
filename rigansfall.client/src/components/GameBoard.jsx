@@ -113,7 +113,7 @@ export default function GameBoard() {
                                     <li key={`${rowIndex}-${colIndex}`}>
                                         <button
                                             onClick={() => handleTileClick(colIndex, rowIndex)}
-                                            /*disabled={ mapData.tiles[rowIndex * 10 + colIndex].isWalkable === false}*/
+                                            disabled={ mapData.tiles[rowIndex * 10 + colIndex].isWalkable === false}
                                         >
 
                                             <img src={mapData && ((isPlayer(colIndex, rowIndex)) ? hero : getPictureName(mapData.tiles[rowIndex * 10 + colIndex].type, mapData.tiles[rowIndex * 10 + colIndex].isWalkable))}
