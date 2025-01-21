@@ -10,9 +10,10 @@ namespace Rigansfall.Server.Models.Services
         private List<Enemy> _enemies;
         private Tile[,] _mapTiles;
 
-        public GameLogicService(string mapFilePath)
+        public GameLogicService()
         {
-            InitializeGame(mapFilePath);
+            string mapJSONPath = Path.Combine(Directory.GetCurrentDirectory(), "Maps", "map3.json");
+            InitializeGame(mapJSONPath);
         }
 
         public Player GetPlayer() => _player;
@@ -62,19 +63,30 @@ namespace Rigansfall.Server.Models.Services
             }
         }
 
-        public bool MovePlayer(int newX, int newY)
+        public void MovePlayer(int newX, int newY)
         {
-            if (!IsOneTileApart(newX, newY)) return false;
-            if (!IsEnemyClicked(newX, newY)) return false;
-
             _player.MovePlayer(newX, newY);
+        }
+
+        public bool CanMovePlayer(int currentX, int currentY, int newX, int newY)
+        {
+            if (!IsOneTileApart(currentX, currentY, newX, newY))
+            {
+                return false;
+            }
+            else if (IsEnemyClicked(newX, newY))
+            {
+                return false;
+            }
+
+            Console.WriteLine($"Player pos X: {_player.X} and pos Y: {_player.Y}");
             return true;
 
         }
 
-        private bool IsOneTileApart(int newX, int newY)
+        private bool IsOneTileApart(int currentX, int currentY, int newX, int newY)
         {
-            if (Math.Abs(_player.X - newX) <= 1 && Math.Abs(_player.Y - newY) <= 1)
+            if (Math.Abs(currentX - newX) <= 1 && Math.Abs(currentY - newY) <= 1)
             {
                 return true;
             }
@@ -86,7 +98,14 @@ namespace Rigansfall.Server.Models.Services
 
         private bool IsEnemyClicked(int newX, int newY)
         {
-            return _enemies.FirstOrDefault(enemy => enemy.X == newX && enemy.Y == newY) != null;
+            var enemy = _enemies.FirstOrDefault(enemy => enemy.X == newX && enemy.Y == newY);
+            if (enemy != null)
+            {
+                Console.WriteLine($"Enemy: {enemy.X} i {enemy.Y}");
+
+            }
+
+            return enemy != null;
         }
 
         private Enemy GetEnemyClicked(int newX, int newY)

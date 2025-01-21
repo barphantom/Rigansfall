@@ -1,3 +1,5 @@
+using Rigansfall.Server.Models.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -22,6 +24,8 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader(); // Pozwala na dowolne nag³ówki
     });
 });
+
+builder.Services.AddSingleton<GameLogicService>();
 
 var app = builder.Build();
 

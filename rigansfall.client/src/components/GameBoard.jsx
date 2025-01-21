@@ -18,7 +18,7 @@ export default function GameBoard() {
     const cols = 10; // Liczba kolumn
     const [mapData, setMapData] = useState({});
     const [loading, setLoading] = useState(true);
-    const [playerPosition, setPlayerPosition] = useState({ x: 4, y: 0 }); // Pozycja gracza
+    const [playerPosition, setPlayerPosition] = useState({ x: 0, y: 4 }); // Pozycja gracza
 
     useEffect(() => {
         if (mapData?.titles?.length > 0) {
@@ -35,7 +35,7 @@ export default function GameBoard() {
 
 
     const handleTileClick = async (x, y) => {
-        const url = "https://localhost:7071/api/MoveRequest"
+        const url = "https://localhost:7071/api/game/move"
         try {
             const respone = await fetch(url, {
                 method: "POST",
@@ -54,7 +54,7 @@ export default function GameBoard() {
                 const result = await respone.json();
                 if (result.canMove) {
                     setPlayerPosition({ x, y });
-                    console.log(`Player moved to (${x}, ${y})`);
+                    console.log(`Player moved to (${x}, ${y}): ${result.reason}`);
                 } else {
                     console.log(`Cannot move to (${x}, ${y}): ${result.reason}`);
                 }
@@ -86,7 +86,7 @@ export default function GameBoard() {
 
     async function getMapInfo() {
         try {
-            const response = await fetch('https://localhost:7071/api/Maps/load-map');  // Adres API
+            const response = await fetch('https://localhost:7071/api/game/load-map');  // Adres API
             if (response.ok) {  // Sprawdzamy, czy odpowiedŸ jest poprawna
                 const data = await response.json();  // Odczytujemy odpowiedŸ jako JSON
                 setMapData(data);  // Ustawiamy dane w stanie mapData
@@ -112,11 +112,11 @@ export default function GameBoard() {
                                 {[...Array(cols)].map((col, colIndex) => (
                                     <li key={`${rowIndex}-${colIndex}`}>
                                         <button
-                                            onClick={() => handleTileClick(rowIndex, colIndex)}
-                                            disabled={ mapData.tiles[rowIndex * 10 + colIndex].isWalkable === false}
+                                            onClick={() => handleTileClick(colIndex, rowIndex)}
+                                            /*disabled={ mapData.tiles[rowIndex * 10 + colIndex].isWalkable === false}*/
                                         >
 
-                                            <img src={mapData && ((isPlayer(rowIndex, colIndex)) ? hero : getPictureName(mapData.tiles[rowIndex * 10 + colIndex].type, mapData.tiles[rowIndex * 10 + colIndex].isWalkable))}
+                                            <img src={mapData && ((isPlayer(colIndex, rowIndex)) ? hero : getPictureName(mapData.tiles[rowIndex * 10 + colIndex].type, mapData.tiles[rowIndex * 10 + colIndex].isWalkable))}
                                                 alt="blad" />
 
                                         </button>
