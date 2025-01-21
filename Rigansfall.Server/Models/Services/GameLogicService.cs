@@ -9,6 +9,7 @@ namespace Rigansfall.Server.Models.Services
         private Player _player;
         private List<Enemy> _enemies;
         private Tile[,] _mapTiles;
+        private int moves = 0;
 
         public GameLogicService()
         {
@@ -66,6 +67,7 @@ namespace Rigansfall.Server.Models.Services
         public void MovePlayer(int newX, int newY)
         {
             _player.MovePlayer(newX, newY);
+            moves++;
         }
 
         public bool CanMovePlayer(int currentX, int currentY, int newX, int newY)
